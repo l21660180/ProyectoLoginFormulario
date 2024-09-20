@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+/* Importa la fuente 'Poppins' desde la pagina de Google Fonts para usar en la página */
+
+* {
+    margin: 0; /* Elimina el margen exterior de todos los elementos */
+    padding: 0; /* Elimina el relleno interior de todos los elementos */
+    box-sizing: border-box; /* Incluye borde y relleno en el tamaño total del elemento */
+    font-family: 'Poppins', sans-serif; /* Usa la fuente 'Poppins' para todo el texto */
+}
+
+body {
+    display: flex; /* Usa el modelo flexbox para alinear todo el contenido */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    min-height: 100vh; /* Asegura que el cuerpo tenga mas o menos la altura completa de la ventana */
+    background: radial-gradient(circle at center, #1f293a, #0d1b2a); /* Aplica un degradado radial oscuro como fondo */
+    position: relative; /* Pone al cuerpo como referencia para colocar otros elementos */
+    overflow: hidden; /* Oculta cualquier parte del contenido que sobresale del cuerpo  */
+}
+
+body::after {
+    content: ''; /* Crea un elemento invisible, o sea el circulo para agregarle estilos */
+    position: absolute; /* Coloca el circulo en una posición específica, sin afectar otros elementos */
+    width: 150%; /* Hace que el circulo sea 50% más grande que su contenedor */
+    height: 150%; /* Aumenta la altura del circulo */
+    background: conic-gradient(from 0deg, rgba(255, 0, 255, 0.5), rgba(0, 255, 255, 0.5), rgba(255, 0, 255, 0.5)); /* Crea un degradado cónico con colores brillantes y semi-transparentes */
+    animation: spinNeon 6s linear infinite; /* Aplica una animación llamada spinNeon que gira el degradado durante 6 segundos y se repite infinitamente */
+    mix-blend-mode: overlay; /* Cambia cómo se mezcla el circulo con el fondo para un efecto visual más dinámico */
+}
+
+@keyframes spinNeon {
+    0% {
+        transform: rotate(0deg); /* Al inicio de la animación, no hay rotación */
+    }
+    100% {
+        transform: rotate(360deg); /* Al final de la animación, el elemento invisible o sea el circulo ha girado 360 grados */
+    }
+}
+
+.container {
+    position: relative; /* Permite posicionar elementos hijos de manera absoluta dentro del contenedor */
+    width: 256px; /* Define el ancho del contenedor */
+    height: 256px; /* Define la altura del contenedor */
+    display: flex; /* Usa flexbox para alinear los elementos dentro del contenedor */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: center; /* Centra los elementos verticalmente */
+    z-index: 1; /* Asegura que el contenedor esté por encima de otros elementos con un índice z menor */
+}
+
+.container span {
+    position: absolute; /* Posiciona el span de manera absoluta dentro del contenedor */
+    left: 0; /* Alinea el span al borde izquierdo del contenedor */
+    width: 32px; /* Define el ancho del span */
+    height: 6px; /* Define la altura del span */
+    background: pink; /* Establece el color de fondo inicial rosa */
+    border-radius: 8px; /* Redondea las esquinas del span */
+    transform-origin: 128px; /* Define el punto de origen para la rotación del span */
+    transform: scale(2.2) rotate(calc(var(--i) * (360deg / 50))); /* Escala el span y lo rota en función de una variable --i */
+    animation: animateColors 3s linear infinite; /* Aplica una animación llamada animateColors que dura 3 segundos y se repite infinitamente */
+    animation-delay: calc(var(--i) * (3s / 50)); /* Retrasa el inicio de la animación en función de la variable --i */
+}
+
+@keyframes animateColors {
+    0% {
+        background: pink; /* Al inicio de la animación, el color de fondo es rosa */
+    }
+    20% {
+        background: blue; /* A los 20%, el color cambia a azul */
+    }
+    40% {
+        background: purple; /* A los 40%, el color cambia a morado */
+    }
+    60% {
+        background: yellow; /* A los 60%, el color cambia a amarillo */
+    }
+    80% {
+        background: aqua; /* A los 80%, el color cambia a aqua */
+    }
+    100% {
+        background: pink; /* Al final de la animación, el color vuelve a rosa */
+    }
+}
+
+.login-box {
+    position: absolute; /* Posiciona el contenedor de inicio de sesión de manera absoluta dentro del elemento padre */
+    width: 400px; /* Define el ancho del contenedor de inicio de sesión */
+}
+
+.login-box form {
+    width: 100%; /* Hace que el formulario ocupe todo el ancho del contenedor de inicio de sesión */
+    padding: 0 50px; /* Agrega 50 píxeles de relleno a los lados del formulario */
+}
+
+h2 {
+    font-size: 2em; /* Define el tamaño de la fuente en 2 veces el tamaño base */
+    color: #0ef; /* Establece el color del texto en azul brillante */
+    text-align: center; /* Centra el texto dentro del contenedor */
+}
+
+.input-box {
+    position: relative; /* Permite posicionar elementos hijos de manera absoluta dentro del contenedor de entrada */
+    margin: 25px 0; /* Agrega un margen de 25 píxeles arriba y abajo */
+}
+
+.input-box input {
+    width: 100%; /* Hace que el campo de entrada ocupe todo el ancho del contenedor */
+    height: 50px; /* Define la altura del campo de entrada */
+    background: transparent; /* Establece un fondo transparente para el campo de entrada */
+    border: 2px solid #2c4766; /* Aplica un borde sólido de 2 píxeles de color gris oscuro */
+    outline: none; /* Elimina el contorno que aparece cuando el campo está enfocado */
+    border-radius: 40px; /* Redondea las esquinas del campo de entrada */
+    font-size: 1em; /* Define el tamaño de la fuente */
+    color: #fff; /* Establece el color del texto en blanco */
+    padding: 0 20px; /* Agrega 20 píxeles de relleno a los lados del campo de entrada */
+    transition: .5s ease; /* Aplica una transición suave de medio segundo para los cambios en los estilos */
+}
+
+.input-box input:focus,
+.input-box input:valid {
+    border-color: #0ef; /* Cambia el color del borde a azul brillante cuando el campo está enfocado o es válido */
+}
+
+.input-box label {
+    position: absolute; /* Posiciona la etiqueta de manera absoluta dentro del contenedor de entrada */
+    top: 50%; /* Coloca la etiqueta en la mitad vertical del contenedor */
+    left: 20px; /* Coloca la etiqueta 20 píxeles desde el borde izquierdo del contenedor */
+    transform: translateY(-50%); /* Ajusta la posición vertical de la etiqueta para centrarla en relación con su altura */
+    font-size: 1em; /* Define el tamaño de la fuente de la etiqueta */
+    color: #fff; /* Establece el color del texto en blanco */
+    pointer-events: none; /* Evita que la etiqueta interfiera con los eventos del ratón */
+    transition: .5s ease; /* Aplica una transición suave de medio segundo para los cambios en los estilos */
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: 1px; /* Mueve la etiqueta hacia arriba a 1 píxel desde la parte superior del contenedor */
+    font-size: .8em; /* Reduce el tamaño de la fuente de la etiqueta a 0.8 veces el tamaño base */
+    background: #1f293a; /* Cambia el fondo de la etiqueta a un color oscuro */
+    padding: 0 6px; /* Agrega 6 píxeles de relleno a los lados de la etiqueta */
+    color: #0ef; /* Cambia el color del texto de la etiqueta a azul brillante */
+}
+
+.forgot-pass {
+    margin: -15px 0 10px; /* Agrega un margen negativo arriba y 10 píxeles abajo */
+    text-align: center; /* Centra el texto dentro del contenedor */
+}
+
+.forgot-pass a {
+    font-size: .85em; /* Define el tamaño de la fuente en 0.85 veces el tamaño base */
+    color: #fff; /* Establece el color del texto en blanco */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+}
+
+.forgot-pass a:hover {
+    text-decoration: underline; /* Aplica un subrayado al enlace cuando el ratón está sobre él */
+}
+
+.btn {
+    width: 100%; /* Hace que el botón ocupe todo el ancho del contenedor */
+    height: 45px; /* Define la altura del botón */
+    background: #0ef; /* Establece el color de fondo del botón en azul brillante */
+    border: none; /* Elimina el borde del botón */
+    outline: none; /* Elimina el contorno que aparece cuando el botón está enfocado */
+    border-radius: 40px; /* Redondea las esquinas del botón */
+    cursor: pointer; /* Cambia el cursor a una mano cuando se pasa sobre el botón */
+    font-size: 1em; /* Define el tamaño de la fuente del botón */
+    color: #1f293a; /* Establece el color del texto del botón en un tono oscuro */
+    font-weight: 600; /* Hace el texto del botón un poco más grueso */
+}
+
+.signup-link {
+    margin: 20px 0 10px; /* Agrega 20 píxeles de margen arriba y 10 píxeles abajo */
+    text-align: center; /* Centra el texto dentro del contenedor */
+}
+
+.signup-link a {
+    font-size: 1em; /* Define el tamaño de la fuente en el tamaño base */
+    color: #0ef; /* Establece el color del texto en azul brillante */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    font-weight: 600; /* Hace el texto del enlace un poco más grueso */
+}
+
+.signup-link a:hover {
+    text-decoration: underline; /* Aplica un subrayado al enlace cuando el ratón está sobre él */
+}
